@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 Emotion.create(name: "joy")
 Emotion.create(name: "fear")
 Emotion.create(name: "anger")
@@ -32,3 +33,5 @@ Recommendation.create(emotion: Emotion.find_by(name: "sadness"), action: Action.
 Recommendation.create(emotion: Emotion.find_by(name: "anxious"), action: Action.find(2))
 Recommendation.create(emotion: Emotion.find_by(name: "disgust"), action: Action.find(5))
 Recommendation.create(emotion: Emotion.find_by(name: "stress"), action: Action.find(7))
+
+Emote.create(input: "I am happy", recommendation: Recommendation.find_by(emotion: Emotion.find_by(name: "joy")))
