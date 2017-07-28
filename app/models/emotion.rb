@@ -1,0 +1,3 @@
+class Emotion < ApplicationController
+
+end
