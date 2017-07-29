@@ -34,9 +34,7 @@ Emotion.create(name: "stress")
 # Recommendation.create(emotion: Emotion.find_by(name: "disgust"), action: Action.find(5))
 # Recommendation.create(emotion: Emotion.find_by(name: "stress"), action: Action.find(7))
 
-Emote.create(input: "I am happy", recommendation: Recommendation.find_by(emotion: Emotion.find_by(name: "joy")))
-
-
+# Emote.create(input: "I am happy", recommendation: Recommendation.find_by(emotion: Emotion.find_by(name: "joy")))
 
 actions = {
 	stress: [
@@ -48,16 +46,14 @@ actions = {
 		"Focus on structured breathing.", 
 		"Call a close friend.", 
 		"Immerse yourself in a hobby you enjoy.", 
-		"Work out.", 
+		"Jog around the block, or longer if you're up for it.", 
 		"Listen to soothing music.", 
 		"Listen to nature sounds.", 
-		"Go for a run.", 
 		"Take a short nap.", 
 		"Go for a bike ride.", 
-		"Medidate.", 
-		"Go for a walk.", 
+		"Meditate.", 
 		"Have a conversation with friends or family.", 
-		"Go outside.", 
+		"Go outside or open a window for fresh air.", 
 		"Have a glass of water.", 
 		"Play with your pet, or visit an animal shelter.", 
 		"Picture a relaxing scene.", 
@@ -65,9 +61,8 @@ actions = {
 	],
 	anger: [
 		"Listen to your favorite song.", 
-		"Take a moment to be present in the moment.", 
+		"Take a moment to be center yourself with deep breaths.Clear your mind.", 
 		"Write a letter you do not intend to send.", 
-		"Take a time out.", 
 		"Go for a walk.", 
 		"Take deep breaths and think about something that makes you happy.", 
 		"Go for a bike ride.", 
@@ -75,33 +70,32 @@ actions = {
 		"Talk with friends or family.", 
 		"Get some fresh air.", 
 		"Go to the gym.", 
-		"Go to the movies."
+		"Go to the movies.", 
+		"Do 10 push-ups. Do another 10 if it feels good.",
+		"Yell into a pillow."
 	],
 	fear: [
 		"Text a friend.", 
 		"Focus on the present moment.", 
-		"Focus on your breathing.", 
-		"Seek out support.", 
+		"Focus on your breathing.",
 		"Go for a walk.", 
 		"Watch a comforting movie.", 
 		"Meditate.", 
-		"Exercise.", 
 		"Talk to someone you trust.", 
-		"Change your surroundings.", 
+		"Change your surroundings, if you can.", 
 		"Listen to music.", 
 		"Take a deep breath.", 
 		"Share your feelings with a close friend."
 	],
 	joy: [
-		"Go for a walk.", 
 		"Call a friend.", 
 		"Make someone laugh.", 
 		"Hug a loved one.", 
-		"Exercise.", 
 		"Smile at a stranger.", 
-		"Remain in the present.", 
-		"Go outside.",
-		"Mow your lawn."
+		"Remain in the present.",
+		"Take a moment to feel gratitude for all that you have!",
+		"Journal about this moment.", 
+		"Treat yourself with something you've wanted for a while."
 	],
 	sadness: [
 		"Do some push-ups.", 
@@ -115,20 +109,25 @@ actions = {
 		"Drink a cup of tea.", 
 		"Watch a funny movie.", 
 		"Talk to family or friends.", 
-		"Focus your enery on work or a hobby.", 
-		"Spend some time to take care of an easy task."
+		"Focus your energy on work or a hobby.", 
+		"Take care of an easy task or small chore, like emptying the dishwasher.",
+		"Cry, if you want to.",
+		"Call or text someone close to you.",
+		"Have you eaten recently? Have a healthy snack.",
+		"Take a shower or soothing bath."
 	],
 	anxious: [
-		"Eat a burrito.",
-		"Focus on breathing.", 
+		"Inhale as deeply as you can, and exhale slowly.",
+		"Drink a cold glass of water or milk.",
+		"Interact with your pet, or visit an animal shelter.",
+		"Take a moment to stretch.",
+		"Take stock of your immediate environment, and change one thing for the better.",
 		"Have a cup of tea.", 
 		"Speak with someone you trust.", 
 		"Seek out a friend or loved one.", 
 		"Go for a walk.", 
 		"Treat yourself to a snack that you enjoy.", 
 		"Meditate.", 
-		"Take a deep breath.", 
-		"Stretch.", 
 		"Go for a run.", 
 		"Listen to relaxing music.", 
 		"Make a list."
@@ -138,28 +137,22 @@ actions = {
 		"Go for a walk.", 
 		"Try to use your empathy.", 
 		"Express your feelings in a constructive way.", 
-		"Remove yourself from your current surroundings.",
-		"Have some ice cream."
+		"Remove yourself from your current surroundings."
 	],
 	tired: [
 		"Get up and move around.", 
-		"Drink water.", 
-		"Stay active.", 
-		"Go for a walk.", 
-		"Get a cup of coffe.", 
-		"Have a cup of tea.", 
+		"Drink a cold glass of water.", 
+		"Get a cup of coffe or your favorite tea.", 
 		"Tell a joke.", 
-		"Take a short nap.", 
-		"Meditate.", 
-		"Exercise.", 
-		"Go for a run.", 
+		"Did you get much sleep? Try closing your eyes for 20 minutes.", 
+		"Take a shower, or wash your face in cold water.", 
 		"Take a break for a few moments."
 	]
 }
 
 actions.each do |emote, action_array|
 	action_array.each do |action|
-		Action.create(content: "#{action} (#{emote})")
-		Recommendation.create(emotion: Emotion.find_by(name: emote), action: Action.last)
+		Action.create(content: "#{action}")
+		Recommendation.find_or_create_by(emotion: Emotion.find_by(name: emote), action: Action.find_by(content: action))
 	end
 end
