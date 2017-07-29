@@ -2,10 +2,11 @@ class EmotesController < ApplicationController
     require 'uri'
 
     def create
-        content_string = params[:content]
-        request_url = URI.encode("https://www.emoj.ai/api/classify?text=#{content_string}&token=#{ENV["EMOJ_ACCESS_TOKEN"]}")
-        response = HTTParty.get(request_url)
-
-        render json: { response: response }
+        p "getting here"
+        emote = Emote.new(input: params[:content])
+        emote.recommendation = emote.retrieve_action
+        emote.save
+        p emote
+        render json: { emote: emote }
     end
 end
