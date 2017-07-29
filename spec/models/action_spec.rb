@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-describe Action do
+RSpec.describe Action do
+    let(:action) { Action.new(content: "Mow your lawn (joy)") }
 
-
-
+    it "has content" do 
+        expect(action.content).to eq "Mow your lawn (joy)"
+    end
 end

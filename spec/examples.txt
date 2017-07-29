@@ -1,0 +1,8 @@
+example_id                                | status | run_time        |
+----------------------------------------- | ------ | --------------- |
+./spec/models/action_spec.rb[1:1]         | passed | 0.00148 seconds |
+./spec/models/emote_spec.rb[1:1]          | passed | 0.00246 seconds |
+./spec/models/emote_spec.rb[1:2]          | passed | 0.03783 seconds |
+./spec/models/emotion_spec.rb[1:1]        | passed | 0.01396 seconds |
+./spec/models/recommendation_spec.rb[1:1] | passed | 0.00185 seconds |
+./spec/models/recommendation_spec.rb[1:2] | passed | 0.00188 seconds |
