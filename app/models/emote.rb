@@ -7,8 +7,7 @@ class Emote < ApplicationRecord
 
     def retrieve_action
         user_input = self.input
-        response = HTTParty.get(URI.encode("https://www.emoj.ai/api/classify?text=#{user_input}&token=#{ENV["EMOJ_ACCESS_TOKEN"]}"))
-        p response
-        Recommendation.where(emotion: Emotion.find_by(name: response[emotion])).sample
+        response = HTTParty.get(URI.encode("https://www.emoj.ai/api/classify?text=#{user_input}&token=#{ENV["EMOJ_ACCESS_TOKEN"]}")).parsed_response
+        Recommendation.where(emotion_id: Emotion.find_by(name: response["emotion"]).id).sample
     end
 end
