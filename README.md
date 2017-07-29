@@ -20,3 +20,10 @@ Future steps include adding user registration for tracking emotional state over 
 Use the Rake command `bundle exec rake db:setup` to get the database up and running. Be sure that the rack-cors gem is uncommented in the Gemfile, as well as the `insert_before` method in `config/initializers/cors.rb`.
 
 What's Next? API uses Circle CI and rspec for its testing suite.
+
+#### The Team
+
+- [Rachel Kerner](http://www.github.com/bb8bear)
+- [Chris McMenomy](http://www.github.com/caristopmer)
+- [Desmond Naranjo](http://www.github.com/dhnaranjo)
+- [Kristina Vragovic](http://www.github.com/kvrag)
