@@ -1,7 +1,8 @@
 class Emote < ApplicationRecord
-    belongs_to :recommendation
-    has_one :emotion, through: :recommendation
-    has_one :action, through: :recommendation
+    belongs_to :user 
+    belongs_to :emotion 
+    has_many :recommendations
+    has_many :actions, through: :recommendations
 
     validates :input, :recommendation, presence: true
 

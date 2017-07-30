@@ -1,7 +1,6 @@
 class Recommendation < ApplicationRecord
-    belongs_to :emotion
+    belongs_to :emote
     belongs_to :action
-    has_many :emotes
 
-    validates :emotion, :action, presence: true
+    validates :emote, :action, presence: true
 end

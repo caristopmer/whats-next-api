@@ -1,8 +1,6 @@
 class Emotion < ApplicationRecord
-    has_many :recommendations
-    has_many :actions, through: :recommendations
-    has_many :emotes, through: :recommendations
-
+    has_many :emotes
+    has_many :actions
 
     validates :name, presence: true
 end
