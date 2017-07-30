@@ -61,7 +61,7 @@ actions = {
 	],
 	anger: [
 		"Listen to your favorite song.", 
-		"Take a moment to be center yourself with deep breaths.Clear your mind.", 
+		"Take a moment to center yourself with deep breaths. Clear your mind.", 
 		"Write a letter you do not intend to send.", 
 		"Go for a walk.", 
 		"Take deep breaths and think about something that makes you happy.", 
@@ -98,9 +98,7 @@ actions = {
 		"Treat yourself with something you've wanted for a while."
 	],
 	sadness: [
-		"Do some push-ups.", 
 		"Spend some time with your pet, or visit an animal shelter.", 
-		"Seek out support.", 
 		"Write down your thoughts.", 
 		"Take time to get out of the house.", 
 		"Breathe.", 
