@@ -6,9 +6,17 @@ class Emote < ApplicationRecord
 
     validates :input, :emotion_id, :action_array, presence: true
 
-    def retrieve_action
+    def retrieve_emotion
         user_input = self.input
         response = HTTParty.get(URI.encode("https://www.emoj.ai/api/classify?text=#{user_input}&token=#{ENV["EMOJ_ACCESS_TOKEN"]}")).parsed_response
-        Recommendation.where(emotion_id: Emotion.find_by(name: response["emotion"]).id).sample
+        Emotion.find_by(name: response["emotion"])
+    end
+
+    def retrieve_actions
+        action_strings = []
+        self.emotion.actions.each do |action|
+            action_strings << action.content
+        end
+        action_strings.shuffle
     end
 end

@@ -3,8 +3,10 @@ class EmotesController < ApplicationController
 
     def create
         emote = Emote.new(input: params[:emote])
-        emote.recommendation = emote.retrieve_action
+        #emote.user = User.new
+        emote.emotion = emote.retrieve_emotion
+        emote.actions_array = emote.retrieve_actions
         emote.save
-        render json: { action: emote.recommendation.action.content }
+        render json: { action: emote.actions_array.pop }
     end
 end
