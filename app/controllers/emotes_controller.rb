@@ -6,8 +6,9 @@ class EmotesController < ApplicationController
       #emote.user = User.new
       emote.emotion = emote.retrieve_emotion
       emote.actions_array = emote.retrieve_actions
+      suggestion = emote.actions_array.pop
       emote.save
-      render json: { action: emote.actions_array.pop, emote_id: emote.id }
+      render json: { action: suggestion, emote_id: emote.id }
   end
 
   def show
@@ -15,7 +16,9 @@ class EmotesController < ApplicationController
     if emote.actions_array.empty?
       render json: { action: "whomp whomp" }
     else
-      render json: { action: emote.actions_array.pop, emote_id: emote.id }
+      suggestion = emote.actions_array.pop
+      emote.save
+      render json: { action: suggestion, emote_id: emote.id }
     end
   end
 end

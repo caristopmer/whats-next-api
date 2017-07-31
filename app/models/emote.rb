@@ -1,10 +1,10 @@
 class Emote < ApplicationRecord
-    belongs_to :user
+    #belongs_to :user
     belongs_to :emotion
     has_many :recommendations, through: :emotion
     has_many :actions, through: :recommendations
 
-    validates :input, :emotion_id, :action_array, presence: true
+    validates :input, :actions_array, presence: true
 
     def retrieve_emotion
         user_input = self.input
