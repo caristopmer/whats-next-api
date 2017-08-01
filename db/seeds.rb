@@ -124,3 +124,9 @@ actions.each do |emotion, action_array|
 		EmotionAction.find_or_create_by(emotion: Emotion.find_by(name: emotion), action: Action.find_or_create_by(action: action))
 	end
 end
+
+Emotion.find_or_create_by(name: "stuck")
+EmotionAction.find_or_create_by(
+	emotion: Emotion.find_by(name: "stuck"),
+	action: Action.find_or_create_by(action: "stuck")
+)
