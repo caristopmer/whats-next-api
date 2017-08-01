@@ -1,7 +1,8 @@
 class Action < ApplicationRecord
     has_many :recommendations
-    has_many :emotions, through: :recommendations
+    has_many :emotion_actions
+    has_many :emotions, through: :emotion_actions
     has_many :emotes, through: :recommendations
 
-    validates :content, presence: true
+    validates :action, presence: true
 end

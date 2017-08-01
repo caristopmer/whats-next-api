@@ -15,11 +15,8 @@ class Emote < ApplicationRecord
         Emotion.find_by(name: response["emotion"])
     end
 
-    def retrieve_actions
-        action_strings = []
-        self.emotion.actions.each do |action|
-            action_strings << action.content
-        end
-        action_strings.shuffle
+    def retrieve_action
+        action = self.emotion.actions.where.not(id: self.action_ids).order("RANDOM()").first
+        self.actions << action
     end
 end
