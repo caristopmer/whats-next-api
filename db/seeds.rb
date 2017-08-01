@@ -150,7 +150,7 @@ actions = {
 
 actions.each do |emote, action_array|
 	action_array.each do |action|
-		Action.find_or_create_by(content: "#{action}")
+		Action.find_or_create_by(action: "#{action}")
 		Recommendation.create(emotion: Emotion.find_by(name: emote), action: Action.find_by(content: action))
 	end
 end
