@@ -121,7 +121,9 @@ actions = {
 
 actions.each do |emotion, action_array|
 	action_array.each do |action|
-		EmotionAction.find_or_create_by(emotion: Emotion.find_by(name: emotion), action: Action.find_or_create_by(action: action))
+		EmotionAction.find_or_create_by(
+			emotion: Emotion.find_by(name: emotion),
+			action: Action.find_or_create_by(action: action))
 	end
 end
 
