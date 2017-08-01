@@ -10,24 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731152416) do
+ActiveRecord::Schema.define(version: 20170801153601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "actions", force: :cascade do |t|
-    t.string "content", null: false
+    t.string "action", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "emotes", force: :cascade do |t|
-    t.string "input", null: false
+    t.string "emote", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "emotion_id"
-    t.string "actions_array", default: [], array: true
+  end
+
+  create_table "emotion_actions", force: :cascade do |t|
+    t.integer "emotion_id"
+    t.integer "action_id"
   end
 
   create_table "emotions", force: :cascade do |t|
@@ -37,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170731152416) do
   end
 
   create_table "recommendations", force: :cascade do |t|
-    t.integer "emotion_id", null: false
+    t.integer "emote_id", null: false
     t.integer "action_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
