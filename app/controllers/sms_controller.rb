@@ -1,7 +1,13 @@
 class SmsController < ApplicationController
 
   def receive
-    emote = Emote.create(emote: params[:Body])
+    emote = Emote.create(
+      emote: params[:Body],
+      user: User.find_or_create_by(
+        identifier: params[:From],
+        identifier_type: "sms"
+        )
+      )
     account_sid = ENV["TWILIO_ACCOUNT_SID"]
     auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
