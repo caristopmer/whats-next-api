@@ -4,5 +4,4 @@ Rails.application.routes.draw do
   get "/emotes/:id" => 'emotes#show'
 
   post '/sms' => 'sms#receive'
-
 end
